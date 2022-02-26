@@ -1,0 +1,26 @@
+syntax="proto3";
+
+import "google/api/annotations.proto";
+
+
+message Number{
+    int32 value=1;
+    int32 value2=2;
+}
+
+
+// service Calculator{
+//     rpc Sum(Number) returns (Number) {}
+// }
+
+service YourService {
+    rpc Sum(Number) returns (Number) {
+      option (google.api.http) = {
+        post: "/home"
+        body: "*"
+      };
+    }
+}
+
+// python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. calculator.proto
+
